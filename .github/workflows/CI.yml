@@ -25,7 +25,7 @@ jobs:
         - name: Install dependencies with composer
           run: | 
             composer update --no-ansi --no-interaction --no-progress
-            vendor/bin/phpunit --coverage-clover=coverage.xml src/tests
+            vendor/bin/phpunit --coverage-clover=coverage.xml tests
           
         - name: SonarCloud Scan
           uses: SonarSource/sonarcloud-github-action@master
