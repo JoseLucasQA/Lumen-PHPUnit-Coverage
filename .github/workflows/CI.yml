@@ -1,4 +1,5 @@
 name: CI
+
 on:
   - pull_request
   - push
@@ -18,12 +19,13 @@ jobs:
         - name: Setup PHP with Xdebug
           uses: shivammathur/setup-php@v2
           with:
-            php-version: '7.2.5'
+            php-version: '8.1'
             coverage: xdebug
             
         - name: Install dependencies with composer
-          run: composer update --no-ansi --no-interaction --no-progress
-              | vendor/bin/phpunit --coverage-clover=coverage.xml tests
+          run: | 
+            composer update --no-ansi --no-interaction --no-progress
+            vendor/bin/phpunit --coverage-clover=coverage.xml
           
         - name: SonarCloud Scan
           uses: SonarSource/sonarcloud-github-action@master
